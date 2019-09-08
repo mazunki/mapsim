@@ -1,7 +1,7 @@
 let map;
-let tile_size=20, border_size=1;
-let rows=20, cols=20;
-let green=[90,200,90], purple=[150,50,200], gray=[100,100,100];
+const tile_size=20, border_size=1;
+const rows=20, cols=20;
+const green=[90,200,90], purple=[150,50,200], gray=[100,100,100];
 
 function setup(){
 	createCanvas(rows*tile_size, cols*tile_size);
@@ -15,8 +15,8 @@ function setup(){
 }
 
 function draw() {
-	for (var i = 0; i < map.length; i++) {
-		for (var j = 0; j < map[i].length; j++) {
+	for (let i = 0; i < map.length; i++) {
+		for (let j = 0; j < map[i].length; j++) {
 			//check data
 			if (map[i][j] == "standard") {
 				color_to_add = green;
