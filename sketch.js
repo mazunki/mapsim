@@ -11,7 +11,7 @@ function setup(){
 		map[i] = new Array(rows).fill("standard");
 	}
 	for (var i = 5; i < 10; i++) {
-		map[4][i] = poop;
+		map[6][i] = poop;
 		map[13][i] = poop;
 	}
 
