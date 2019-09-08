@@ -10,14 +10,16 @@ function setup(){
 	for (let i=0; i<cols; i++){
 		map[i] = new Array(rows).fill(green);
 	}
+	//eyes
 	for (var i = 5; i < 10; i++) {
 		map[6][i] = poop;
 		map[13][i] = poop;
 	}
-
+	//mouth
 	for (var i = 5; i < 15; i++) {
 		map[i][13] = red;
 	}
+	//cute smile
 	map[4][12] = red;
 	map[15][12] = red;
 
