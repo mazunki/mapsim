@@ -10,8 +10,23 @@ function setup(){
 	for (let i=0; i<cols; i++){
 		map[i] = new Array(rows).fill("standard");
 	}
-	map[5][7] = "poop"
-	map[6][8] = "poop"
+	map[6][3] = "poop";
+	map[6][4] = "poop";
+	map[6][5] = "poop";
+	map[6][6] = "poop";
+	map[6][7] = "poop";
+	map[13][3] = "poop";
+	map[13][4] = "poop";
+	map[13][5] = "poop";
+	map[13][6] = "poop";
+	map[13][7] = "poop";
+
+	for (var i = 5; i < 15; i++) {
+		map[i][13] = "poop";
+	}
+	map[4][12] = "poop";
+	map[15][12] = "poop";
+
 }
 
 function draw() {
