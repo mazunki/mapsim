@@ -1,7 +1,7 @@
 let map;
 const tile_size=20, border_size=1;
 const rows=20, cols=20;
-const green=[90,200,90], purple=[150,50,200], gray=[100,100,100], poop=[128,0,0], red=[255,0,0];
+const green=[90,200,90], purple=[150,50,200], gray=[100,100,100], poop=[128,0,0], red=[255,0,0], orange=[255,165,0];
 
 function setup(){
 	createCanvas(rows*tile_size, cols*tile_size);
@@ -37,4 +37,14 @@ function draw() {
 			rect(i*tile_size+border_size, j*tile_size+border_size, tile_size-2*border_size, tile_size-2*border_size);
 		}
 	}
+}
+
+function mousePressed(){
+	let estimateX, estimateY;
+	index_x = floor(mouseX/tile_size);
+	index_y = floor(mouseY/tile_size);
+
+	map[index_x][index_y] = orange;
+
+	//return x, y
 }
