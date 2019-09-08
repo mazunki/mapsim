@@ -1,7 +1,7 @@
 let map;
 const tile_size=20, border_size=1;
 const rows=20, cols=20;
-const green=[90,200,90], purple=[150,50,200], gray=[100,100,100];
+const green=[90,200,90], purple=[150,50,200], gray=[100,100,100], poop=[128,0,0], red=[255,0,0];
 
 function setup(){
 	createCanvas(rows*tile_size, cols*tile_size);
@@ -10,22 +10,16 @@ function setup(){
 	for (let i=0; i<cols; i++){
 		map[i] = new Array(rows).fill("standard");
 	}
-	map[6][3] = "poop";
-	map[6][4] = "poop";
-	map[6][5] = "poop";
-	map[6][6] = "poop";
-	map[6][7] = "poop";
-	map[13][3] = "poop";
-	map[13][4] = "poop";
-	map[13][5] = "poop";
-	map[13][6] = "poop";
-	map[13][7] = "poop";
+	for (var i = 5; i < 10; i++) {
+		map[4][i] = poop;
+		map[13][i] = poop;
+	}
 
 	for (var i = 5; i < 15; i++) {
-		map[i][13] = "poop";
+		map[i][13] = red;
 	}
-	map[4][12] = "poop";
-	map[15][12] = "poop";
+	map[4][12] = red;
+	map[15][12] = red;
 
 }
 
@@ -36,7 +30,7 @@ function draw() {
 			if (map[i][j] == "standard") {
 				color_to_add = green;
 			} else {
-				color_to_add = purple;
+				color_to_add = map[i][j];
 			};
 
 			// draw tile
