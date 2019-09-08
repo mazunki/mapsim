@@ -1,11 +1,11 @@
 let map;
 let tile_size=20, border_size=1;
 let rows=20, cols=20;
-let green=[90,200,90], purple=[150,50,200];
+let green=[90,200,90], purple=[150,50,200], gray=[100,100,100];
 
 function setup(){
 	createCanvas(rows*tile_size, cols*tile_size);
-	background(green);
+	background(gray);
 	map = new Array(cols);
 	for (let i=0; i<cols; i++){
 		map[i] = new Array(rows).fill("standard");
