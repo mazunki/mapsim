@@ -8,7 +8,7 @@ function setup(){
 	background(gray);
 	map = new Array(cols);
 	for (let i=0; i<cols; i++){
-		map[i] = new Array(rows).fill("standard");
+		map[i] = new Array(rows).fill(green);
 	}
 	for (var i = 5; i < 10; i++) {
 		map[6][i] = poop;
@@ -27,11 +27,7 @@ function draw() {
 	for (let i = 0; i < map.length; i++) {
 		for (let j = 0; j < map[i].length; j++) {
 			//check data
-			if (map[i][j] == "standard") {
-				color_to_add = green;
-			} else {
-				color_to_add = map[i][j];
-			};
+			color_to_add = map[i][j];
 
 			// draw tile
 			noStroke();
