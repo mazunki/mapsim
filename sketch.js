@@ -39,12 +39,17 @@ function draw() {
 	}
 }
 
-function mousePressed(){
+function mouseClicked(){
 	let estimateX, estimateY;
 	index_x = floor(mouseX/tile_size);
 	index_y = floor(mouseY/tile_size);
 
 	map[index_x][index_y] = orange;
+}
+function mouseDragged(){
+	let estimateX, estimateY;
+	index_x = floor(mouseX/tile_size);
+	index_y = floor(mouseY/tile_size);
 
-	//return x, y
+	map[index_x][index_y] = orange;
 }
