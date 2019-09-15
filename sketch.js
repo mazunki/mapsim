@@ -1,6 +1,22 @@
 let map;
 const rows=20, cols=20;
 
+// Function to download data to a file
+function download(data, filename, type) {
+    var file = new Blob([data], {type: type});
+    var a = document.createElement("a");
+    var url = URL.createObjectURL(file);
+
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function() {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);  
+    }, 0); 
+}
+
 
 function setup(){
 	my_area = createCanvas(rows*tile_size, cols*tile_size);  // define an area for the html
@@ -33,4 +49,11 @@ function clickListener(){
 	index_y = floor(mouseY/tile_size);
 
 	map[index_x][index_y].newColor(orange);
+}
+
+
+function keyPressed(){
+	if (key == "s"){
+		download( JSON.stringify(map.map(row => row.map(item => item.color))), "mapdata.json", "json");
+	}
 }

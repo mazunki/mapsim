@@ -30,9 +30,11 @@ class Tile {
 
 	draw(){
 		noStroke();
-		fill(this.color);
-		this.rect = rect(this.x*tile_size+border_size, this.y*tile_size+border_size, tile_size-2*border_size, tile_size-2*border_size);
-		this.changed = false;
+		if (this.changed) {
+			fill(this.color);
+			this.rect = rect(this.x*tile_size+border_size, this.y*tile_size+border_size, tile_size-2*border_size, tile_size-2*border_size);
+			this.changed = false;
+		}	
 	}
 
 }
