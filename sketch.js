@@ -17,6 +17,37 @@ function download(data, filename, type) {
     }, 0); 
 }
 
+function parseAndSaveContents(content){
+	mapValues = JSON.parse(content);
+
+	map = new Array(mapValues.length);
+	for (let i=0; i<mapValues.length; i++){
+		map[i] = new Array(map.length);
+		for (let j=0; j<mapValues[i].length; j++){
+			map[i][j] = new Tile(i, j);
+			map[i][j].newColor(mapValues[i][j]);
+		}
+	}
+	//draw();
+}
+
+function load(map) {
+	var a = document.createElement('input');
+	a.type = 'file';
+	a.onchange = function(source) { 
+	   var file = source.target.files[0]; 
+	   var reader = new FileReader();
+	   reader.readAsText(file,'UTF-8');
+
+	   let parsedMap;
+	   reader.onload = function(readerEvent) {
+	      var content = readerEvent.target.result;
+	      parseAndSaveContents(content, map);
+	   }
+	}
+	a.click();
+}
+
 
 function setup(){
 	my_area = createCanvas(rows*tile_size, cols*tile_size);  // define an area for the html
@@ -30,7 +61,6 @@ function setup(){
 		for (let j=0; j<rows; j++)
 			map[i][j] = new Tile(i, j);
 	}
-
 }
 
 function draw() {
@@ -55,5 +85,8 @@ function clickListener(){
 function keyPressed(){
 	if (key == "s"){
 		download( JSON.stringify(map.map(row => row.map(item => item.color))), "mapdata.json", "json");
+	}
+	else if (key == "o"){
+		load(map);
 	}
 }

@@ -8,9 +8,9 @@ class Tile {
 		this.y = pos_y;
 		// checkers!
 		if ((pos_x+pos_y)%2 == 0){
-			this.color = green;
+			this.color = [200,200,200];
 		} else {
-			this.color = red;
+			this.color = [250,250,250];
 		}
 		this.changed = true;
 	}
