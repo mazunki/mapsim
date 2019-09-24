@@ -1,5 +1,5 @@
 const tile_size=20, border_size=0;
-const green=[90,200,90], purple=[150,50,200], gray=[100,100,100], poop=[128,0,0], red=[255,0,0], orange=[255,165,0];
+const green=[90,200,90], purple=[150,50,200], gray=[100,100,100], poop=[128,0,0], red=[255,0,0], orange=[255,165,0], yellow=[255,255,0];
 
 
 class Tile {
@@ -20,17 +20,28 @@ class Tile {
 			this.color = color;
 		}
 		this.changed = true;
+		this.tempColor = this.color;
 	}
 
 	newColor(color){
 		this.changed = true;
 		this.color = color;
+		this.tempColor = color;
+	}
+
+	newTempColor(color){
+		this.changed = true;
+		this.tempColor = color;
+	}
+	oldTempColor(color){
+		this.changed = true;
+		this.tempColor = this.color;
 	}
 
 	draw(){
 		noStroke();
 		if (this.changed) {
-			fill(this.color);
+			fill(this.tempColor);
 			this.rect = rect(this.x1+border_size, this.y1+border_size, (this.x2-this.x1)-2*border_size, (this.y2-this.y1)-2*border_size);
 			this.changed = false;
 		}
@@ -43,8 +54,17 @@ class Tile {
 	hover(){
 		if ((this.x1 <= mouseX) && (mouseX <= this.x2)
 		&& (this.y1 <= mouseY) && (mouseY <= this.y2)){
+			this.hovered = true;
 			if (this.daddy){
-				this.daddy.dialogue();
+				this.daddy.hover();
+			}
+		} else {
+			this.hovered = false;
+			if (this.daddy){
+				setTimeout( function(d){
+					d.unhover();
+					console.log("poop")
+				}, 1000, this.daddy);
 			}
 		}
 	}

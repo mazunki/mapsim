@@ -8,4 +8,20 @@ class NPC {
 	dialogue(){
 		console.log(this.name + ": HEY CLOWN!");
 	}
+
+	markChildren(child){
+		child.newTempColor(yellow);
+	}
+	hover(){
+		this.dialogue();
+		this.children.forEach(this.markChildren);
+	}
+	unmarkChildren(child){
+		child.oldTempColor();
+	}
+	unhover(){
+		this.dialogue();
+		this.children.forEach(this.unmarkChildren);
+	}
+
 }

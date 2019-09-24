@@ -15,15 +15,13 @@ function setup(){
 
 	roberto = new NPC("Roberto");
 	my_npc = [[5,5], [5,6], [6,6], [6,5], [7,6]];
-	for (let tile of my_npc){
-		roberto.children.push(tile);
-	}
 	for (let i=0; i<map.length; i++){
 		for (let j=0; j<map[i].length; j++){
 			for (let npctile of my_npc){
 				if ((npctile[0] == map[i][j].coords[0])
 				&& (npctile[1] == map[i][j].coords[1])){
 					map[i][j].daddy = roberto;
+					roberto.children.push(map[i][j]);
 					map[i][j].newColor(red);
 				}
 			} 
